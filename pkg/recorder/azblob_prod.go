@@ -31,8 +31,8 @@ func (r *Recorder) uploadAzblob() error {
 
 	containerURL := azblob.NewContainerURL(*URL, p)
 
-	blobURL := containerURL.NewBlockBlobURL(r.filename)
-	file, err := os.Open(r.filepath)
+	blobURL := containerURL.NewBlockBlobURL(r.filepath)
+	file, err := os.Open(r.filename)
 	if err != nil {
 		return err
 	}
@@ -44,6 +44,5 @@ func (r *Recorder) uploadAzblob() error {
 		BlockSize:       4 * 1024 * 1024,
 		Parallelism:     16,
 	})
-
 	return err
 }

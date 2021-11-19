@@ -91,7 +91,7 @@ func (r *Recorder) Run() *livekit.RecordingResult {
 		res.DownloadUrl = fmt.Sprintf("https://%s.blob.core.windows.net/%s/%s",
 			r.conf.FileOutput.Azblob.AccountName,
 			r.conf.FileOutput.Azblob.ContainerName,
-			r.filename,
+			r.filepath,
 		)
 	}
 
