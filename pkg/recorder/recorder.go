@@ -2,6 +2,7 @@ package recorder
 
 import (
 	"fmt"
+	"os"
 	"strings"
 	"time"
 
@@ -59,7 +60,11 @@ func (r *Recorder) Run() *livekit.RecordingResult {
 	}
 
 	// wait for START_RECORDING console log
-	if strings.HasPrefix(r.url, "https://recorder.livekit.io") {
+	recorderSiteAddress := os.Getenv("RECORDER_SITE_ADDRESS")
+	if len(recorderSiteAddress) == 0 {
+		recorderSiteAddress = "recorder.livekit.io"
+	}
+	if strings.HasPrefix(r.url, "https://"+recorderSiteAddress) {
 		r.display.WaitForRoom()
 	}
 	// stop on END_RECORDING console log
