@@ -1,6 +1,7 @@
 package recorder
 
 import (
+	"os"
 	"testing"
 
 	livekit "github.com/livekit/protocol/proto"
@@ -21,8 +22,12 @@ func TestInputUrl(t *testing.T) {
 			},
 		},
 	}
+	recorderSiteAddress := os.Getenv("RECORDER_SITE_ADDRESS")
+	if len(recorderSiteAddress) == 0 {
+		recorderSiteAddress = "recorder.livekit.io"
+	}
 
-	expected := "https://recorder.livekit.io/#/speaker-light?url=wss%3A%2F%2Ftest.livekit.cloud&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
+	expected := "https://" + recorderSiteAddress + "/#/speaker-light?url=wss%3A%2F%2Ftest.livekit.cloud&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
 	rec := &Recorder{
 		conf: &config.Config{WsUrl: "wss://test.livekit.cloud"},
 	}
