@@ -95,6 +95,7 @@ func newInputBin(isStream bool, options *livekit.RecordingOptions) (*InputBin, e
 	}
 	x264Enc.SetArg("speed-preset", "veryfast")
 	x264Enc.SetArg("tune", "zerolatency")
+	x264Enc.SetArg("dct8x8", "false") // this makes the video play correctly on many players
 
 	videoQueue, err := gst.NewElement("queue")
 	if err != nil {
