@@ -21,6 +21,7 @@ api_secret: livekit server api secret (required if using templates without suppl
 ws_url: livekit server ws url (required if using templates)
 health_port: http port to serve status (optional)
 log_level: valid levels are debug, info, warn, error, fatal, or panic. Defaults to debug
+template_address: template address override (for hosting your own templates). Defaults to https://recorder.livekit.io
 redis: (service mode only)
     address: redis address, including port
     username: redis username (optional)
@@ -33,6 +34,7 @@ file_output:
         secret: s3 access secret
         region: s3 region
         bucket: s3 bucket
+        endpoint: s3 server endpoint (optional - for use with minio)
     azblob: (required if using azure blob output)
         account_name: azure blob account
         account_key: azure blob access key
