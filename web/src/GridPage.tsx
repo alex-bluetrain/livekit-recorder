@@ -1,3 +1,4 @@
+import Loader from 'react-loader-spinner';
 import {
   LocalParticipant, Participant, RemoteParticipant,
 } from 'livekit-client';
@@ -119,6 +120,14 @@ const renderStage: React.FC<StageProps> = ({ roomState }: StageProps) => {
         />
       ))}
       {audioRenderers}
+      <div style={{ position: 'absolute' }}>
+        <Loader
+          type="Watch"
+          color="#808088030"
+          height={20}
+          width={20}
+        />
+      </div>
     </div>
   );
 };
